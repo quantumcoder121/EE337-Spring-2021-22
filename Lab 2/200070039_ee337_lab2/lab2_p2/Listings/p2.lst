@@ -1,0 +1,100 @@
+A51 MACRO ASSEMBLER  P2                                                                   01/23/2022 13:43:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p2.a51 SET(SMALL) DEBUG PRINT(.\Listings\p2.lst) OBJECT(.\Objects\p2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+0000                   2     ORG 0H
+0000 020100            3     LJMP MAIN
+0100                   4     ORG 100H
+0100                   5     MAIN:
+0100 3130              6     CALL MAC
+0102 80FE              7     HERE: SJMP HERE
+0130                   8     ORG 130H
+                       9     
+0130                  10     MAC:
+                      11     
+0130 7800             12     MOV R0, #00H
+0132 7900             13     MOV R1, #00H
+0134 7A00             14     MOV R2, #00H
+0136 7B00             15     MOV R3, #00H
+0138 7C00             16     MOV R4, #00H
+013A AD70             17     MOV R5, 70H
+013C AE73             18     MOV R6, 73H
+013E 3161             19     LOOP1: CALL ADD16
+0140 DEFC             20     DJNZ R6, LOOP1
+0142 7B00             21     MOV R3, #00H
+0144 7C00             22     MOV R4, #00H
+0146 AD71             23     MOV R5, 71H
+0148 AE74             24     MOV R6, 74H
+014A 3161             25     LOOP2: CALL ADD16
+014C DEFC             26     DJNZ R6, LOOP2
+014E 7B00             27     MOV R3, #00H
+0150 7C00             28     MOV R4, #00H
+0152 AD72             29     MOV R5, 72H
+0154 AE75             30     MOV R6, 75H
+0156 3161             31     LOOP3: CALL ADD16
+0158 DEFC             32     DJNZ R6, LOOP3
+015A 8850             33     MOV 50H, R0
+015C 8951             34     MOV 51H, R1
+015E 8A52             35     MOV 52H, R2
+0160 22               36     RET
+0161                  37     ADD16:
+                      38     
+0161 EA               39     MOV A, R2
+0162 2D               40     ADD A, R5
+0163 FA               41     MOV R2, A
+0164 E9               42     MOV A, R1
+0165 5010             43     JNC NOTCARRY1
+0167 2401             44     ADD A, #01H
+0169 500C             45     JNC NOTCARRY1
+016B F9               46     MOV R1, A
+016C E8               47     MOV A, R0
+016D 2401             48     ADD A, #01H
+016F 2B               49     ADD A, R3
+0170 F8               50     MOV R0, A
+0171 E9               51     MOV A, R1
+0172 2C               52     ADD A, R4
+0173 F9               53     MOV R1, A
+0174 020180           54     LJMP EOP
+0177 2C               55     NOTCARRY1: ADD A, R4
+0178 F9               56     MOV R1, A
+0179 E8               57     MOV A, R0
+A51 MACRO ASSEMBLER  P2                                                                   01/23/2022 13:43:31 PAGE     2
+
+017A 5002             58     JNC NOTCARRY2
+017C 2401             59     ADD A, #01H
+017E 2B               60     NOTCARRY2: ADD A, R3
+017F F8               61     MOV R0, A
+0180                  62     EOP:
+0180 22               63     RET
+                      64     END
+A51 MACRO ASSEMBLER  P2                                                                   01/23/2022 13:43:31 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD16. . . . . . .  C ADDR   0161H   A   
+EOP. . . . . . . .  C ADDR   0180H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+LOOP1. . . . . . .  C ADDR   013EH   A   
+LOOP2. . . . . . .  C ADDR   014AH   A   
+LOOP3. . . . . . .  C ADDR   0156H   A   
+MAC. . . . . . . .  C ADDR   0130H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NOTCARRY1. . . . .  C ADDR   0177H   A   
+NOTCARRY2. . . . .  C ADDR   017EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

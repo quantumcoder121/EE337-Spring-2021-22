@@ -1,0 +1,75 @@
+A51 MACRO ASSEMBLER  P1                                                                   01/23/2022 13:25:03 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p1.a51 SET(SMALL) DEBUG PRINT(.\Listings\p1.lst) OBJECT(.\Objects\p1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+0000                   2     ORG 0H
+0000 020100            3     LJMP MAIN
+0100                   4     ORG 100H
+0100                   5     MAIN:
+0100 3130              6     CALL ADD16
+0102 80FE              7     HERE: SJMP HERE
+0130                   8     ORG 130H
+                       9     
+0130                  10     ADD16:
+                      11     
+0130 7800             12     MOV R0, #00H
+0132 A970             13     MOV R1, 70H
+0134 AA71             14     MOV R2, 71H
+0136 7B00             15     MOV R3, #00H
+0138 AC72             16     MOV R4, 72H
+013A AD73             17     MOV R5, 73H
+013C EA               18     MOV A, R2
+013D 2D               19     ADD A, R5
+013E FA               20     MOV R2, A
+013F E9               21     MOV A, R1
+0140 5010             22     JNC NOTCARRY1
+0142 2401             23     ADD A, #01H
+0144 500C             24     JNC NOTCARRY1
+0146 F9               25     MOV R1, A
+0147 E8               26     MOV A, R0
+0148 2401             27     ADD A, #01H
+014A 2B               28     ADD A, R3
+014B F8               29     MOV R0, A
+014C E9               30     MOV A, R1
+014D 2C               31     ADD A, R4
+014E F9               32     MOV R1, A
+014F 02015B           33     LJMP EOP
+0152 2C               34     NOTCARRY1: ADD A, R4
+0153 F9               35     MOV R1, A
+0154 E8               36     MOV A, R0
+0155 5002             37     JNC NOTCARRY2
+0157 2401             38     ADD A, #01H
+0159 2B               39     NOTCARRY2: ADD A, R3
+015A F8               40     MOV R0, A
+015B 8874             41     EOP: MOV 74H, R0
+015D 8975             42     MOV 75H, R1
+015F 8A76             43     MOV 76H, R2
+0161 22               44     RET
+                      45     END
+A51 MACRO ASSEMBLER  P1                                                                   01/23/2022 13:25:03 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD16. . . . . . .  C ADDR   0130H   A   
+EOP. . . . . . . .  C ADDR   015BH   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NOTCARRY1. . . . .  C ADDR   0152H   A   
+NOTCARRY2. . . . .  C ADDR   0159H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
