@@ -1,0 +1,69 @@
+A51 MACRO ASSEMBLER  P1                                                                   04/02/2022 15:54:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p1.a51 SET(SMALL) DEBUG PRINT(.\Listings\p1.lst) OBJECT(.\Objects\p1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 E530              5     MOV A, 30H
+0102 F5F0              6     MOV B, A
+0104 A4                7     MUL AB
+0105 F8                8     MOV R0, A
+0106 E8                9     MOV A, R0
+0107 FF               10     MOV R7, A
+0108                  11     LOOP:
+0108 E8               12     MOV A, R0
+0109 C3               13     CLR C
+010A 2430             14     ADD A, #30H
+010C F9               15     MOV R1, A
+010D E7               16     MOV A, @R1
+010E FA               17     MOV R2, A
+010F E8               18     MOV A, R0
+0110 C3               19     CLR C
+0111 2430             20     ADD A, #30H
+0113 C3               21     CLR C
+0114 2F               22     ADD A, R7
+0115 F9               23     MOV R1, A
+0116 E7               24     MOV A, @R1
+0117 FB               25     MOV R3, A
+0118 EA               26     MOV A, R2
+0119 C3               27     CLR C
+011A 2B               28     ADD A, R3
+011B FC               29     MOV R4, A
+011C E8               30     MOV A, R0
+011D C3               31     CLR C
+011E 2430             32     ADD A, #30H
+0120 C3               33     CLR C
+0121 2F               34     ADD A, R7
+0122 C3               35     CLR C
+0123 2F               36     ADD A, R7
+0124 F9               37     MOV R1, A
+0125 EC               38     MOV A, R4
+0126 F7               39     MOV @R1, A
+0127 D8DF             40     DJNZ R0, LOOP
+0129 22               41     RET
+                      42     END
+A51 MACRO ASSEMBLER  P1                                                                   04/02/2022 15:54:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LOOP . . . . . . .  C ADDR   0108H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,236 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/02/2022 16:47:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <at89c5131.h>
+   2          #include "endsem.h"
+   3          
+   4          char S_str[6]= {0,0,0,0,0,0};   //String for Balance Sita
+   5          char G_str[6] = {0,0,0,0,0,0};  //String for Balance Gita
+   6          int s_bal = 10000;
+   7          int g_bal = 10000;
+   8          char n500_s[3]= {0,0,0};    // STRING FOR 500RS NOTE
+   9          char n100_s[3]= {0,0,0};    // STRING FOR 100RS NOTE
+  10          
+  11          char password[5] = {0,0,0,0,0} ;   //PASSWORD ARRAY
+  12          //Main function
+  13          
+  14          //-------------------------------------------------
+  15          void main(void)
+  16          {
+  17   1        unsigned char ch = 0;
+  18   1        unsigned char chac = 0;
+  19   1        unsigned char ch1 = 0;
+  20   1        unsigned char ch2 = 0;
+  21   1        int num = 0;
+  22   1        int num_five = 0;
+  23   1        int num_one = 0;
+  24   1        uart_init();      // Please finish this function in endsem.h
+  25   1        int_to_string(s_bal, S_str);
+  26   1        int_to_string(g_bal, G_str);  
+  27   1          while (1)
+  28   1          {
+  29   2              /* code */
+  30   2              // YOUR CODE GOES HERE
+  31   2            // initial state
+  32   2            transmit_string("Press A for Account display and W for withdrawing cash\r\n");
+  33   2            
+  34   2            ch = receive_char();
+  35   2            
+  36   2            if (ch == 'A' || ch == 'a'){
+  37   3      
+  38   3              transmit_string("Hello, Please enter Account Number\r\n");
+  39   3              
+  40   3              chac = receive_char();
+  41   3            
+  42   3              if (chac == '1'){
+  43   4                transmit_string("Account Holder: Sita\r\n");
+  44   4                transmit_string("Account Balance: ");
+  45   4                transmit_string(S_str);
+  46   4                transmit_string("\r\n");
+  47   4              }
+  48   3      
+  49   3              else if (chac == '2'){
+  50   4                transmit_string("Account Holder: Gita\r\n");
+  51   4                transmit_string("Account Balance: ");
+  52   4                transmit_string(G_str);
+  53   4                transmit_string("\r\n");
+  54   4              }
+C51 COMPILER V9.60.0.0   MAIN                                                              04/02/2022 16:47:04 PAGE 2   
+
+  55   3      
+  56   3              else {
+  57   4                transmit_string("No such account, please enter valid details\r\n");
+  58   4              }
+  59   3      
+  60   3              continue;
+  61   3            }
+  62   2      
+  63   2            if (ch == 'W' || ch == 'w'){
+  64   3      
+  65   3              transmit_string("Withdraw state, enter Account Number\r\n");
+  66   3              
+  67   3              chac = receive_char();
+  68   3              
+  69   3              num = 0;
+  70   3            
+  71   3              if (chac == '1' || chac == '2'){
+  72   4                
+  73   4                transmit_string("Enter amount, in hundreds\r\n");
+  74   4                
+  75   4                  ch1 = receive_char();
+  76   4                
+  77   4                  ch2 = receive_char();
+  78   4                
+  79   4                
+  80   4                if (ch1 == '0') {
+  81   5                  num = num + 10 * 0;
+  82   5                }
+  83   4                else if (ch1 == '1') {
+  84   5                  num = num + 10 * 1;
+  85   5                }
+  86   4                else if (ch1 == '2') {
+  87   5                  num = num + 10 * 2;
+  88   5                }
+  89   4                else if (ch1 == '3') {
+  90   5                  num = num + 10 * 3;
+  91   5                }
+  92   4                else if (ch1 == '4') {
+  93   5                  num = num + 10 * 4;
+  94   5                }
+  95   4                else if (ch1 == '5') {
+  96   5                  num = num + 10 * 5;
+  97   5                }
+  98   4                else if (ch1 == '6') {
+  99   5                  num = num + 10 * 6;
+ 100   5                }
+ 101   4                else if (ch1 == '7') {
+ 102   5                  num = num + 10 * 7;
+ 103   5                }
+ 104   4                else if (ch1 == '8') {
+ 105   5                  num = num + 10 * 8;
+ 106   5                }
+ 107   4                else if (ch1 == '9') {
+ 108   5                  num = num + 10 * 9;
+ 109   5                }
+ 110   4                else {
+ 111   5                  transmit_string("Invalid Amount\r\n");
+ 112   5                }
+ 113   4                
+ 114   4                if (ch2 == '0') {
+ 115   5                  num = num + 0;
+ 116   5                }
+C51 COMPILER V9.60.0.0   MAIN                                                              04/02/2022 16:47:04 PAGE 3   
+
+ 117   4                else if (ch2 == '1') {
+ 118   5                  num = num + 1;
+ 119   5                }
+ 120   4                else if (ch2 == '2') {
+ 121   5                  num = num + 2;
+ 122   5                }
+ 123   4                else if (ch2 == '3') {
+ 124   5                  num = num + 3;
+ 125   5                }
+ 126   4                else if (ch2 == '4') {
+ 127   5                  num = num + 4;
+ 128   5                }
+ 129   4                else if (ch2 == '5') {
+ 130   5                  num = num + 5;
+ 131   5                }
+ 132   4                else if (ch2 == '6') {
+ 133   5                  num = num + 6;
+ 134   5                }
+ 135   4                else if (ch2 == '7') {
+ 136   5                  num = num + 7;
+ 137   5                }
+ 138   4                else if (ch2 == '8') {
+ 139   5                  num = num + 8;
+ 140   5                }
+ 141   4                else if (ch2 == '9') {
+ 142   5                  num = num + 9;
+ 143   5                }
+ 144   4                else {
+ 145   5                  transmit_string("Invalid Amount\r\n");
+ 146   5                }
+ 147   4                
+ 148   4                num = num * 100;
+ 149   4                
+ 150   4                if (chac == '1') {
+ 151   5                  if (s_bal < num) {
+ 152   6                    transmit_string("Insufficient Funds\r\n");
+ 153   6                  }
+ 154   5                  else {
+ 155   6                    s_bal = s_bal - num;
+ 156   6                    int_to_string(s_bal, S_str);
+ 157   6                    num_five = num / 500;
+ 158   6                    num_one = (num % 500) / 100;
+ 159   6                    int_to_string_2(num_one, n100_s);
+ 160   6                    int_to_string_2(num_five, n500_s);
+ 161   6                    transmit_string("Remaining Balance: ");
+ 162   6                    transmit_string(S_str);
+ 163   6                    transmit_string("\r\n");
+ 164   6                    transmit_string("500 Notes: ");
+ 165   6                    transmit_string(n500_s);
+ 166   6                    transmit_string(", 100 Notes: ");
+ 167   6                    transmit_string(n100_s);
+ 168   6                    transmit_string("\r\n");
+ 169   6                  }
+ 170   5                }
+ 171   4      
+ 172   4                else {
+ 173   5                  if (g_bal < num) {
+ 174   6                    transmit_string("Insufficient Funds\r\n");
+ 175   6                  }
+ 176   5                  else {
+ 177   6                    g_bal = g_bal - num;
+ 178   6                    int_to_string(g_bal, G_str);
+C51 COMPILER V9.60.0.0   MAIN                                                              04/02/2022 16:47:04 PAGE 4   
+
+ 179   6                    num_five = num / 500;
+ 180   6                    num_one = (num % 500) / 100;
+ 181   6                    int_to_string_2(num_one, n100_s);
+ 182   6                    int_to_string_2(num_five, n500_s);
+ 183   6                    transmit_string("Remaining Balance: ");
+ 184   6                    transmit_string(G_str);
+ 185   6                    transmit_string("\r\n");
+ 186   6                    transmit_string("500 Notes: ");
+ 187   6                    transmit_string(n500_s);
+ 188   6                    transmit_string(", 100 Notes: ");
+ 189   6                    transmit_string(n100_s);
+ 190   6                    transmit_string("\r\n");
+ 191   6                  }
+ 192   5                } 
+ 193   4      
+ 194   4              }
+ 195   3      
+ 196   3              else {
+ 197   4                transmit_string("No such account, please enter valid details");
+ 198   4              }
+ 199   3      
+ 200   3              continue;
+ 201   3            }
+ 202   2            
+ 203   2          }
+ 204   1      }
+ 205          
+ 206          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1110    ----
+   CONSTANT SIZE    =    402    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     27      23
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
