@@ -1,0 +1,113 @@
+A51 MACRO ASSEMBLER  P2                                                                   02/07/2022 14:51:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p2.a51 SET(SMALL) DEBUG PRINT(.\Listings\p2.lst) OBJECT(.\Objects\p2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 75F010            2     MAINLOOP: MOV B, #10H
+0003 E550              3     MOV A, 50H
+0005 A4                4     MUL AB
+0006 F590              5     MOV P1, A
+0008 1171              6     CALL DELAY_200MS
+000A 75F010            7     MOV B, #10H
+000D E551              8     MOV A, 51H
+000F A4                9     MUL AB
+0010 F590             10     MOV P1, A
+0012 1171             11     CALL DELAY_200MS
+0014 75F010           12     MOV B, #10H
+0017 740F             13     MOV A, #0FH
+0019 A4               14     MUL AB
+001A F590             15     MOV P1, A
+001C 1171             16     CALL DELAY_200MS
+001E 75F010           17     MOV B, #10H
+0021 E552             18     MOV A, 52H
+0023 A4               19     MUL AB
+0024 F590             20     MOV P1, A
+0026 1171             21     CALL DELAY_200MS
+0028 75F010           22     MOV B, #10H
+002B E553             23     MOV A, 53H
+002D A4               24     MUL AB
+002E F590             25     MOV P1, A
+0030 1171             26     CALL DELAY_200MS
+0032 75F010           27     MOV B, #10H
+0035 740F             28     MOV A, #0FH
+0037 A4               29     MUL AB
+0038 F590             30     MOV P1, A
+003A 1171             31     CALL DELAY_200MS
+003C 75F010           32     MOV B, #10H
+003F E554             33     MOV A, 54H
+0041 A4               34     MUL AB
+0042 F590             35     MOV P1, A
+0044 1171             36     CALL DELAY_200MS
+0046 75F010           37     MOV B, #10H
+0049 E555             38     MOV A, 55H
+004B A4               39     MUL AB
+004C F590             40     MOV P1, A
+004E 1171             41     CALL DELAY_200MS
+0050 75F010           42     MOV B, #10H
+0053 E556             43     MOV A, 56H
+0055 A4               44     MUL AB
+0056 F590             45     MOV P1, A
+0058 1171             46     CALL DELAY_200MS
+005A 75F010           47     MOV B, #10H
+005D E557             48     MOV A, 57H
+005F A4               49     MUL AB
+0060 F590             50     MOV P1, A
+0062 1171             51     CALL DELAY_200MS
+0064 75F010           52     MOV B, #10H
+0067 740F             53     MOV A, #0FH
+0069 A4               54     MUL AB
+006A F590             55     MOV P1, A
+006C 1171             56     CALL DELAY_200MS
+006E 020000           57     LJMP MAINLOOP
+A51 MACRO ASSEMBLER  P2                                                                   02/07/2022 14:51:39 PAGE     2
+
+0071                  58     DELAY_200MS:
+0071 C000             59     PUSH 00H
+0073 78C8             60     MOV R0, #200
+0075 117C             61     H3: ACALL DELAY_1MS
+0077 D8FC             62     DJNZ R0, H3
+0079 D000             63     POP 00H
+007B 22               64     RET
+007C                  65     DELAY_1MS:
+007C C000             66     PUSH 00H
+007E 7804             67     MOV R0, #4
+0080 1187             68     H2: ACALL DELAY_250US
+0082 D8FC             69     DJNZ R0, H2
+0084 D000             70     POP 00H
+0086 22               71     RET
+0087                  72     DELAY_250US:
+0087 C000             73     PUSH 00H
+0089 78F4             74     MOV R0, #244
+008B D8FE             75     H1: DJNZ R0, H1
+008D D000             76     POP 00H
+008F 22               77     RET
+                      78     END
+A51 MACRO ASSEMBLER  P2                                                                   02/07/2022 14:51:39 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY_1MS. . . . .  C ADDR   007CH   A   
+DELAY_200MS. . . .  C ADDR   0071H   A   
+DELAY_250US. . . .  C ADDR   0087H   A   
+H1 . . . . . . . .  C ADDR   008BH   A   
+H2 . . . . . . . .  C ADDR   0080H   A   
+H3 . . . . . . . .  C ADDR   0075H   A   
+MAINLOOP . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
