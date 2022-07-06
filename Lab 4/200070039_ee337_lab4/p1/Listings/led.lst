@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  LED                                                                  02/07/2022 12:16:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\led.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE led.asm SET(SMALL) DEBUG PRINT(.\Listings\led.lst) OBJECT(.\Objects\led
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0h
+0000 020100            2     ljmp main
+0100                   3     org 100h
+                       4                     
+0100                   5                     main : 
+0100 D294              6                             setb p1.4       ;setting port pin 1.4 
+0102 310A              7                             acall delay     ;calling delay label
+0104 C294              8                             clr p1.4        ;clearing port pin 1.4
+0106 310A              9                             acall delay     ;calling delay label
+0108 80F6             10                             sjmp main       ;short jump to main label
+                      11                             
+                      12                     ;code lines written below will generate some delay
+                      13                     
+                      14                     
+010A                  15                     delay :
+010A 7AFF             16                             mov R2,#255
+                      17                             
+010C                  18                     delay1 : 
+010C 79FF             19                             mov R1, #255
+010E D9FE             20                             here : djnz R1, here
+0110 DAFA             21                             djnz R2,delay1 
+0112 22               22                     ret     
+                      23                             
+                      24     end
+                                                             
+A51 MACRO ASSEMBLER  LED                                                                  02/07/2022 12:16:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   010AH   A   
+DELAY1 . . . . . .  C ADDR   010CH   A   
+HERE . . . . . . .  C ADDR   010EH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
