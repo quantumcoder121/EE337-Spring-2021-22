@@ -1,0 +1,108 @@
+A51 MACRO ASSEMBLER  P1                                                                   01/29/2022 16:37:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p1.a51 SET(SMALL) DEBUG PRINT(.\Listings\p1.lst) OBJECT(.\Objects\p1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL SEARCH
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+0130                   8     SEARCH:
+                       9     
+0130 E531             10     MOV A, 31H
+0132 B40004           11     CJNE A, #00H, SAFE
+0135 75330E           12     MOV 33H, #0EH
+0138 22               13     RET
+0139 A830             14     SAFE: MOV R0, 30H
+013B E8               15     MOV A, R0
+013C 2531             16     ADD A, 31H
+013E C3               17     CLR C
+013F 9401             18     SUBB A, #01H
+0141 F9               19     MOV R1, A
+0142 AA32             20     MOV R2, 32H
+0144 E9               21     LOOP: MOV A, R1
+0145 C3               22     CLR C
+0146 98               23     SUBB A, R0
+0147 C3               24     CLR C
+0148 9402             25     SUBB A, #02H
+014A 5003             26     JNC SKIP
+014C 020170           27     LJMP BREAK
+014F E9               28     SKIP: MOV A, R1
+0150 C3               29     CLR C
+0151 98               30     SUBB A, R0
+0152 75F002           31     MOV B, #02H
+0155 84               32     DIV AB
+0156 28               33     ADD A, R0
+0157 FD               34     MOV R5, A
+0158 FC               35     MOV R4, A
+0159 E8               36     MOV A, R0
+015A FB               37     MOV R3, A
+015B EC               38     MOV A, R4
+015C F8               39     MOV R0, A
+015D E6               40     MOV A, @R0
+015E FC               41     MOV R4, A
+015F EB               42     MOV A, R3
+0160 F8               43     MOV R0, A
+0161 EC               44     MOV A, R4
+0162 C3               45     CLR C
+0163 9A               46     SUBB A, R2
+0164 4005             47     JC ELSIF1
+0166 ED               48     MOV A, R5
+0167 F9               49     MOV R1, A
+0168 02016D           50     LJMP ENDIFELS1
+016B ED               51     ELSIF1: MOV A, R5
+016C F8               52     MOV R0, A
+016D 020144           53     ENDIFELS1: LJMP LOOP
+0170 E6               54     BREAK: MOV A, @R0
+0171 C3               55     CLR C
+0172 9A               56     SUBB A, R2
+0173 B40005           57     CJNE A, #00H, ELSIF2
+A51 MACRO ASSEMBLER  P1                                                                   01/29/2022 16:37:06 PAGE     2
+
+0176 8833             58     MOV 33H, R0
+0178 020189           59     LJMP ENDIFELS2
+017B E7               60     ELSIF2: MOV A, @R1
+017C C3               61     CLR C
+017D 9A               62     SUBB A, R2
+017E B40005           63     CJNE A, #00H, ELSIF3
+0181 8933             64     MOV 33H, R1
+0183 020189           65     LJMP ENDIFELS2
+0186 75330E           66     ELSIF3: MOV 33H, #0EH
+0189 00               67     ENDIFELS2: NOP
+018A 22               68     RET
+                      69     END
+A51 MACRO ASSEMBLER  P1                                                                   01/29/2022 16:37:06 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BREAK. . . . . . .  C ADDR   0170H   A   
+ELSIF1 . . . . . .  C ADDR   016BH   A   
+ELSIF2 . . . . . .  C ADDR   017BH   A   
+ELSIF3 . . . . . .  C ADDR   0186H   A   
+ENDIFELS1. . . . .  C ADDR   016DH   A   
+ENDIFELS2. . . . .  C ADDR   0189H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+LOOP . . . . . . .  C ADDR   0144H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+SAFE . . . . . . .  C ADDR   0139H   A   
+SEARCH . . . . . .  C ADDR   0130H   A   
+SKIP . . . . . . .  C ADDR   014FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
