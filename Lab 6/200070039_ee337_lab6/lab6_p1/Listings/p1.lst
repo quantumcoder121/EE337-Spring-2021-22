@@ -1,0 +1,84 @@
+A51 MACRO ASSEMBLER  P1                                                                   03/06/2022 17:19:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\p1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE p1.a51 SET(SMALL) DEBUG PRINT(.\Listings\p1.lst) OBJECT(.\Objects\p1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020200            2             LJMP MAIN
+                       3     
+0200                   4     ORG 200H
+                       5     
+0200                   6     MAIN:
+                       7     
+0200 758901            8             MOV 89H, #01H
+0203 E530              9             MOV A, 30H
+0205 FD               10             MOV R5, A
+                      11     
+0206                  12     MAIN_LOOP:
+                      13             
+0206 74FF             14             MOV A, #0FFH
+0208 F590             15             MOV P1, A
+020A ED               16             MOV A, R5
+020B FE               17             MOV R6, A
+020C                  18             MAIN_LOOP1:
+020C 511D             19                     CALL DELAY_1S
+020E DEFC             20                     DJNZ R6, MAIN_LOOP1
+0210 7400             21             MOV A, #00H
+0212 F590             22             MOV P1, A
+0214 ED               23             MOV A, R5
+0215 FE               24             MOV R6, A
+0216                  25             MAIN_LOOP2:
+0216 511D             26                     CALL DELAY_1S
+0218 DEFC             27                     DJNZ R6, MAIN_LOOP2
+                      28             
+021A 020206           29             LJMP MAIN_LOOP
+                      30     
+021D                  31             DELAY_1S:
+021D 7FC8             32                     MOV R7, #0C8H
+021F                  33                     LOOP1:
+021F 758CD8           34                             MOV TH0, #0D8H
+0222 758AF0           35                             MOV TL0, #0F0H
+0225 C28D             36                             CLR TF0
+0227 D28C             37                             SETB TR0
+0229                  38                             HERE: 
+0229 308D03           39                                     JNB TF0, NO_BR
+022C 020231           40                                             LJMP BR
+022F                  41                                     NO_BR:
+022F 80F8             42                                             SJMP HERE
+0231                  43                             BR:
+0231 DFEC             44                                     DJNZ R7, LOOP1
+0233 22               45                     RET
+                      46     END
+A51 MACRO ASSEMBLER  P1                                                                   03/06/2022 17:19:49 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BR . . . . . . . .  C ADDR   0231H   A   
+DELAY_1S . . . . .  C ADDR   021DH   A   
+HERE . . . . . . .  C ADDR   0229H   A   
+LOOP1. . . . . . .  C ADDR   021FH   A   
+MAIN . . . . . . .  C ADDR   0200H   A   
+MAIN_LOOP. . . . .  C ADDR   0206H   A   
+MAIN_LOOP1 . . . .  C ADDR   020CH   A   
+MAIN_LOOP2 . . . .  C ADDR   0216H   A   
+NO_BR. . . . . . .  C ADDR   022FH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
